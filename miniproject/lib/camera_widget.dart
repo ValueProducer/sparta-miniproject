@@ -1,6 +1,9 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:provider/src/provider.dart';
+import 'package:test/classservice.dart';
+import 'package:test/mainpage.dart';
 
 class Registerclass extends StatefulWidget {
   @override
@@ -249,6 +252,9 @@ class register_class extends State<Registerclass> {
                   print(class_int);
                   setState(() {
                     _formKey.currentState!.save();
+                    classservice class_service = context.read<classservice>();
+                    class_service.createclass(
+                        name, career, intro, class_tar, class_int);
                     Navigator.pop(context);
                   });
                 }
@@ -339,45 +345,5 @@ class register_class extends State<Registerclass> {
       imageFile = pickedFile!;
     });
     Navigator.pop(context);
-  }
-}
-
-class daily_class {
-  String name = '';
-  String career = '';
-  String intro = '';
-  String class_tar = '';
-  String class_int = '';
-  daily_class(
-    this.name,
-    this.career,
-    this.intro,
-    this.class_tar,
-    this.class_int,
-  ); // 생성자
-}
-
-class BucketService extends ChangeNotifier {
-  List<daily_class> class_list = [
-    daily_class('이찬희', '하하하', '하하하', '하하하', '하하하'), // 더미(dummy) 데이터
-  ]; //ChangeNotifier : 변경된 데이터에 대해 알람을 보낸다
-
-  /// bucket 추가
-  void createBucket(String name, String career, String intro, String class_tar,
-      String class_int) {
-    class_list.add(daily_class(name, career, intro, class_tar, class_int));
-    notifyListeners(); // 갱신 = Consumer<BucketService>의 builder 부분만 새로고침
-  }
-
-  /// bucket 수정
-  // void updateBucket(daily_class class_, int index) {
-  //   class_list[index] = ;
-  //   notifyListeners();
-  // }
-
-  /// bucket 삭제
-  void deleteclass(int index) {
-    class_list.removeAt(index);
-    notifyListeners();
   }
 }
