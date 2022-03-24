@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/src/provider.dart';
 import 'package:test/classservice.dart';
-import 'package:test/mainpage.dart';
+import 'package:test/pages/mainpage.dart';
 
 class Registerclass extends StatefulWidget {
   @override

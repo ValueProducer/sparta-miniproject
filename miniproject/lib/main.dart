@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:test/loginpage.dart';
-import 'package:test/mainpage.dart';
+import 'package:test/pages/mainpage.dart';
+import 'package:test/pages/loginpage.dart';
 import 'camera_widget.dart';
 import 'classservice.dart';
 import 'package:flutter/cupertino.dart';

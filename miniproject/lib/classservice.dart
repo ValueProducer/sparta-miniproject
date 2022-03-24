@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'camera_widget.dart';
-import 'main.dart';
-import 'mainpage.dart';
+import 'package:test/camera_widget.dart';
+import 'package:test/main.dart';
+import 'package:test/pages/mainpage.dart';
 
 class classservice extends ChangeNotifier {
   List<daily_class> class_list = [

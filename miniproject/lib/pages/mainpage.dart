@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:test/classservice.dart';
-import 'camera_widget.dart';
+import 'package:test/camera_widget.dart';
 import 'loginpage.dart';
 
 class Mainpage extends StatefulWidget {
@@ -27,6 +27,7 @@ class MainpageState extends State<Mainpage> {
       return Consumer<classservice>(builder: (context, classservice, child) {
         List<daily_class> class_list = classservice.class_list;
         return Scaffold(
+          appBar: AppBar(title: Text("로그인")),
           body: Center(
             child: Column(
               children: [

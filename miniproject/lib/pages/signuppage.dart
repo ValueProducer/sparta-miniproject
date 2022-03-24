@@ -1,23 +1,19 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:test/mainpage.dart';
 
-/// 홈페이지
-class Loginpage extends StatefulWidget {
-  const Loginpage({Key? key}) : super(key: key);
-
+class SignUpPage extends StatefulWidget {
+  const SignUpPage({Key? key}) : super(key: key);
   @override
-  State<Loginpage> createState() => _LoginPageState();
+  State<SignUpPage> createState() => _SignUpPageState();
 }
 
-class _LoginPageState extends State<Loginpage> {
+class _SignUpPageState extends State<SignUpPage> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-
+  TextEditingController passwordConfirmController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("로그인")),
+      appBar: AppBar(title: Text("회원가입")),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(
@@ -26,7 +22,7 @@ class _LoginPageState extends State<Loginpage> {
             /// 현재 유저 로그인 상태
             Center(
               child: Text(
-                "로그인해 주세요 🙂",
+                "회원가입 페이지",
                 style: TextStyle(
                   fontSize: 24,
                 ),
@@ -43,29 +39,25 @@ class _LoginPageState extends State<Loginpage> {
             /// 비밀번호
             TextField(
               controller: passwordController,
-              obscureText: false, // 비밀번호 안보이게
+              obscureText: true, // 비밀번호 안보이게
               decoration: InputDecoration(hintText: "비밀번호"),
             ),
-            SizedBox(height: 32),
 
-            /// 로그인 버튼
-            ElevatedButton(
-              child: Text("로그인", style: TextStyle(fontSize: 21)),
-              onPressed: () {
-                // 로그인 성공시 HomePage로 이동
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (_) => Mainpage()),
-                );
-              },
+            /// 비밀번호 확인
+            TextField(
+              controller: passwordConfirmController,
+              obscureText: true, // 비밀번호 안보이게
+              decoration: InputDecoration(hintText: "비밀번호확인"),
             ),
+            SizedBox(height: 32),
 
             /// 회원가입 버튼
             ElevatedButton(
               child: Text("회원가입", style: TextStyle(fontSize: 21)),
               onPressed: () {
                 // 회원가입
-                print("sign up");
+                // Navigator.push(
+                //     context, MaterialPageRoute(builder: (_) => SignUpPage()));
               },
             ),
           ],
