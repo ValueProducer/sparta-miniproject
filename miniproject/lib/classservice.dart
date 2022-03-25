@@ -1,9 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'camera_widget.dart';
-import 'main.dart';
-import 'mainpage.dart';
+import 'package:test/camera_widget.dart';
+import 'package:test/main.dart';
+import 'package:test/mainpage.dart';
 
 class classservice extends ChangeNotifier {
+  final classCollection = FirebaseFirestore.instance.collection('class');
   List<daily_class> class_list = [
     daily_class('이찬희11', '하하하', '하하하', '하하하', '하하하'),
     daily_class('이찬희22', '하하하', '하하하', '하하하', '하하하'), // 더미(dummy) 데이터

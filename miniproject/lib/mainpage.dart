@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:test/auth_service.dart';
 import 'package:test/classservice.dart';
-import 'camera_widget.dart';
+import 'package:test/camera_widget.dart';
 import 'loginpage.dart';
+import 'auth_service.dart';
 
 class Mainpage extends StatefulWidget {
   const Mainpage({Key? key}) : super(key: key);
@@ -21,12 +23,13 @@ class MainpageState extends State<Mainpage> {
   String class_int = '';
   @override
   Widget build(BuildContext context) {
-    return Builder(builder: (
-      context,
-    ) {
+    return Builder(builder: (context) {
+      final authService = context.read<AuthService>();
+      final user = authService.currentUser()!;
       return Consumer<classservice>(builder: (context, classservice, child) {
         List<daily_class> class_list = classservice.class_list;
         return Scaffold(
+          appBar: AppBar(title: Text("로그인")),
           body: Center(
             child: Column(
               children: [
@@ -72,18 +75,30 @@ class MainpageState extends State<Mainpage> {
                           },
                         ),
                 ),
-                FloatingActionButton(
-                  onPressed: () async {
-                    await Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => Registerclass(),
+                Row(
+                  children: [
+                    FloatingActionButton(
+                      onPressed: () async {
+                        await Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Registerclass(),
+                          ),
+                        );
+                      },
+                      child: Icon(
+                        Icons.plus_one_outlined,
                       ),
-                    );
-                  },
-                  child: Icon(
-                    Icons.plus_one_outlined,
-                  ),
+                    ),
+                    FloatingActionButton(
+                      onPressed: () async {
+                        AuthService().signOut();
+                      },
+                      child: Icon(
+                        Icons.plus_one_outlined,
+                      ),
+                    ),
+                  ],
                 )
               ],
             ),
