@@ -24,7 +24,10 @@ class _LoginPageState extends State<LoginPage> {
       builder: (context, authService, child) {
         final user = authService.currentUser();
         return Scaffold(
-          appBar: AppBar(title: Text("로그인")),
+          appBar: AppBar(
+              automaticallyImplyLeading: false,
+              centerTitle: true,
+              title: Text("로그인")),
           body: SingleChildScrollView(
             padding: const EdgeInsets.all(16),
             child: Column(
@@ -33,7 +36,7 @@ class _LoginPageState extends State<LoginPage> {
                 /// 현재 유저 로그인 상태
                 Center(
                   child: Text(
-                    user == null ? "로그인해 주세요 🙂" : "${user.email}님 안녕하세요 👋",
+                    user == null ? "로그인해 주세요" : "로그인해 주세요",
                     style: TextStyle(
                       fontSize: 24,
                     ),

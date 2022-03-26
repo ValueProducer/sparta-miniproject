@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:test/loginpage%20copy.dart';
 
 import 'auth_service.dart';
 
@@ -69,6 +70,11 @@ class _SignUpPageState extends State<SignUpPage> {
                       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                         content: Text("회원가입 성공"),
                       ));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => LoginPage(),
+                          ));
                     },
                     onError: (err) {
                       // 에러 발생
